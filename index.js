@@ -10,9 +10,11 @@ const {
   ApolloServerPluginLandingPageGraphQLPlayground,
 } = require("apollo-server-core");
 
+const { connectDB } = require("./database");
 
 //Initializations
 const app = express();
+connectDB();
 const httpServer = http.createServer(app);
 
 const startServer = async () => {
