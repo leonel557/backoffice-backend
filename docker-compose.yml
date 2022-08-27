@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  db:
+    image: library/postgres
+    container_name: backend_container
+    restart: always
+    environment:
+      - POSTGRES_DB=backend
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '2525:5432'
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./sql:/docker-entrypoint-initdb.d
+    hostname: postgres
+  pgadmin:
+    container_name: pgadmin4_backend_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - '6060:80'
