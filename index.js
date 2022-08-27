@@ -21,7 +21,7 @@ const startServer = async () => {
   const schema = makeExecutableSchema({ typeDefs, resolvers });
   server = new ApolloServer({
     schema,
-    introspection: true, // <-- temporal config
+    introspection: process.env.NODE_ENV === "development",
     plugins: [
       ApolloServerPluginLandingPageDisabled(),
       ApolloServerPluginLandingPageGraphQLPlayground(),
