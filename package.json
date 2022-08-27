@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Leonel",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon ."
+  },
   "dependencies": {
     "@graphql-tools/schema": "^9.0.2",
     "apollo-server-express": "^3.10.2",
