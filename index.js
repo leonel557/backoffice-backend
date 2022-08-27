@@ -26,6 +26,14 @@ const startServer = async () => {
       ApolloServerPluginLandingPageDisabled(),
       ApolloServerPluginLandingPageGraphQLPlayground(),
     ],
+    context: ({ req, res }) => {
+      const head =
+        process.env.NODE_ENV !== "development"
+          ? process.env.APP_URL
+          : "http://localhost:3000";
+      res.setHeader("Access-Control-Allow-Origin", head);
+      return { ...req, ...res };
+    }
   });
   //For Apollo V3
   await server.start();

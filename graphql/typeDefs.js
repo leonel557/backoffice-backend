@@ -32,6 +32,7 @@ const typeDefs = gql`
 
   type Mutation {
     login(input: UserInput): String # <-- This string will be used as a token 
+    sendEvaluation: Int # <-- Score
   }
 `;
 
