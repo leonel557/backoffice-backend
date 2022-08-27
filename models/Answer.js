@@ -7,6 +7,14 @@ const getAnswers = (id_question) => {
   `, [id_question]);
 }
 
+const getCorrectAnswers = () => {
+  return db(`
+    SELECT id, id_question FROM answers
+    WHERE is_correct = true
+  `)
+}
+
 module.exports = {
   getAnswers,
+  getCorrectAnswers,
 }

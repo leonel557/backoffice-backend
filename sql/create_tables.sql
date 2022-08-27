@@ -22,6 +22,7 @@ CREATE TABLE evaluations (
   id SERIAL PRIMARY KEY,
   score integer,
   id_user integer,
+  date_created timestamp,
   CONSTRAINT fk_user FOREIGN KEY(id_user) REFERENCES users(id)
 );
 

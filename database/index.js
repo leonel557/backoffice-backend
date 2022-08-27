@@ -10,7 +10,6 @@ exports.db = (query, values = []) =>
       })
       .catch((err) => {
         // client.end();
-        console.log(error);
         reject(err);
       });
   });
