@@ -17,3 +17,20 @@ CREATE TABLE answers (
   is_correct boolean,
   CONSTRAINT fk_questions FOREIGN KEY(id_question) REFERENCES questions(id)
 );
+
+CREATE TABLE evaluations (
+  id SERIAL PRIMARY KEY,
+  score integer,
+  id_user integer,
+  CONSTRAINT fk_user FOREIGN KEY(id_user) REFERENCES users(id)
+);
+
+CREATE TABLE responses (
+  id SERIAL PRIMARY KEY,
+  id_evaluation integer,
+  id_question integer,
+  id_answer integer,
+  CONSTRAINT fk_evaluvations FOREIGN KEY(id_evaluation) REFERENCES evaluations(id),
+  CONSTRAINT fk_questions2 FOREIGN KEY(id_question) REFERENCES questions(id),
+  CONSTRAINT fk_answer FOREIGN KEY(id_answer) REFERENCES answers(id)
+);
